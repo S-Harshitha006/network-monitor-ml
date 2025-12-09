@@ -85,8 +85,6 @@ network_ml/
 └── requirements.txt
 
 🛠️ Installation
-1️⃣ Clone the repository
-git clone https://github.com/YOUR-USERNAME/network_ml.git
 cd network_ml
 
 2️⃣ Create & activate virtual environment
