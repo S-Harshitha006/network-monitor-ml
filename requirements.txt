@@ -1,0 +1,10 @@
+flask
+scapy
+psutil
+joblib
+numpy
+pandas
+matplotlib
+scikit-learn
+requests
+jinja2
