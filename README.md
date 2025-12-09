@@ -1,137 +1,152 @@
 🛰️ Network ML Analyzer
+Real-Time Network Traffic Monitoring + Machine Learning Anomaly Detection
 
-A real-time network traffic monitoring dashboard enhanced with Machine Learning for anomaly detection.
-The system captures live packets, analyzes upload/download speed, shows destination trends, and uses an ML model to classify packets as NORMAL or SUSPICIOUS — all running in a Fast, Beautiful Web Dashboard (Flask).
+A high-performance real-time network traffic analyzer powered by Machine Learning, built with Flask, Scapy, and RandomForestClassifier.
+Visualizes live bandwidth usage, packet details, destination trends, and classifies traffic as NORMAL or SUSPICIOUS — all inside a beautiful, dark-themed web dashboard.
 
 🚀 Features
-🔹 Real-Time Monitoring
+🔹 Real-Time Network Monitoring
 
-Live upload & download speed graph (KB/s)
+Live Upload/Download speed graph (KB/s)
 
 Packet rate (packets/sec)
 
 Total packets captured
 
-Recent packet list with protocol, source, destination, and ML prediction
+Recent packet table with:
+
+Protocol
+
+Source
+
+Destination
+
+ML Prediction (NORMAL / SUSPICIOUS)
 
 🔹 ML-Powered Packet Classification
 
-Trained ML model (packet_model.pkl)
+Uses trained ML model: packet_model.pkl
 
-Reads packet metadata in real time
+Extracts real-time packet metadata
 
-Labels packets:
-NORMAL or SUSPICIOUS
+Classifies packets instantly
 
-Lightweight & fast for live monitoring
+Lightweight & optimized for low-latency monitoring
 
-🔹 Extra Network Tools
+Model: RandomForestClassifier (high speed + accuracy)
 
-Traceroute utility
+🔹 Network Utility Tools
 
-Configurable probe target (8.8.8.8 by default)
+Built-in Traceroute
 
-Live top destinations visualization
+Configurable probing target (default: 8.8.8.8)
 
-🔹 Clean, Responsive UI
+Real-time Top Destination IPs graph
 
-Dark-themed dashboard
+🔹 Clean & Modern UI
 
-Fully browser-based
+Fully responsive dashboard
 
-Updates automatically every few seconds
+Dark theme
+
+Auto-refreshing stats
+
+Built with Flask + AJAX + Chart.js
 
 🧠 Machine Learning Model
 
-The ML model is trained using:
+Model trained using features:
 
 Packet size
 
-Time delta
+Time delta between packets
 
-Protocol type
+Protocol
 
-Source/Destination ports
+Source & destination ports
 
-Additional derived network metrics
+Derived behavioral metrics
 
-Steps included:
+Training Pipeline:
 
-Packet capture for dataset creation (capture_packets_for_training.py)
+Capture packets → capture_packets_for_training.py
 
-Dataset cleaning/processing
+Clean dataset
 
-Model training (train_model.py)
+Train RandomForest model → train_model.py
 
-Saving model → packet_model.pkl
+Save final model as packet_model.pkl 
 
-Model used: RandomForestClassifier (for speed + accuracy)
-
-📂 Project Structure
 network_ml/
 │
-├── dashboard.py                 # Main Flask dashboard
-├── live_monitor.py              # Live system usage monitor
-├── live_ml_packets.py           # ML classifier for live packets
-├── capture_packets_for_training.py
-├── train_model.py
+├── dashboard.py                     # Flask UI dashboard
+├── live_monitor.py                  # Live bandwidth + system monitor
+├── live_ml_packets.py               # Real-time ML packet analyzer
+├── capture_packets_for_training.py  # Dataset generator
+├── train_model.py                   # ML model training
 │
-├── packet_model.pkl             # Trained ML model
-├── packets_dataset.csv          # Training dataset
-├── traffic_data.csv             # Monitoring dataset
+├── packet_model.pkl                 # Trained ML model
+├── packets_dataset.csv              # Training dataset
+├── traffic_data.csv                 # Monitoring dataset
 │
-├── venv/                        # Virtual environment
-├── .gitignore
-└── requirements.txt
+├── venv/                            # Virtual environment
+├── requirements.txt
+└── .gitignore
 
 🛠️ Installation
+git clone <your-repo-url>
 cd network_ml
 
-2️⃣ Create & activate virtual environment
+1️⃣ Create & activate virtual environment
 python -m venv venv
 .\venv\Scripts\activate
 
-3️⃣ Install dependencies
+2️⃣ Install dependencies
 pip install -r requirements.txt
 
 ▶️ Run the Dashboard
-
-Start the live web dashboard:
-
 python dashboard.py
 
+Open your browser:
 
-Then open in browser:
+👉 http://127.0.0.1:8080
 
-http://127.0.0.1:8080
-
-📊 How the Dashboard Works
+📊 How It Works
 
 Captures packets using Scapy
 
-Extracts key features from each packet
+Extracts ML-relevant features
 
-Sends features to ML model
+Sends features to the ML model
 
-Updates dashboard every X seconds via AJAX
+Dashboard updates every few seconds
 
-Displays predictions and statistical graphs
+Data & predictions stay local and private
 
-Everything runs locally — no external server needed.
+No cloud servers, no data sharing
 
 🔐 Security Notes
 
-Does NOT send any packet data to the internet
-
-All processing happens on your machine
-
-Safe for personal use & academic projects
+✔ Processes all network data locally
+✔ No packets sent to the internet
+✔ Safe for academic, research, or personal projects
 
 🤝 Contributing
 
-Pull requests are welcome.
-New ideas: ML improvements, UI redesign, protocol breakdown, alerts system, firewall integration.
+Pull requests are welcome!
+
+Ideas you can add:
+
+Improved anomaly detection
+
+UI redesign
+
+Protocol-specific charts
+
+Alerts / Notifications
+
+Firewall rule automation
 
 ⭐ Support
 
-If you like this project, consider giving the repo a star ⭐ on GitHub.
+If you like this project, please ⭐ star the repo on GitHub.
